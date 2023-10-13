@@ -1,5 +1,6 @@
 package br.com.superpetcare.superpetcare;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +19,8 @@ public class PetService {
         return pets;
     }
 
-    public Optional<Pet> findById(UUID id){
-        var pet = petRepository.findById(id);
+    public Pet findById(UUID id){
+        var pet = petRepository.findById(id).orElseThrow(() -> new ControlerNotFoundException("Pet não encontrado"));
         return pet;
     }
 
@@ -32,12 +33,18 @@ public class PetService {
     public Pet update(UUID id, Pet pet){
         Pet searchPet = petRepository.getOne(id);
 
-        searchPet.setName(pet.getName());
-        searchPet.setDescription(pet.getDescription());
-        searchPet.setImageUrl(pet.getImageUrl());
-        searchPet = petRepository.save(searchPet);
+        try {
+            searchPet.setName(pet.getName());
+            searchPet.setDescription(pet.getDescription());
+            searchPet.setImageUrl(pet.getImageUrl());
+            searchPet = petRepository.save(searchPet);
 
-        return searchPet;
+            return searchPet;
+
+        } catch (EntityNotFoundException e){
+            throw new ControlerNotFoundException("Produto não encontrado");
+        }
+
     }
 
     public void delete(UUID id){

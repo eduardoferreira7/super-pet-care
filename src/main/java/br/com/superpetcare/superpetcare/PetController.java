@@ -24,7 +24,7 @@ public class PetController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Pet>> findById(@PathVariable UUID id){
+    public ResponseEntity<Pet> findById(@PathVariable UUID id){
         var pet = petService.findById(id);
 
         return ResponseEntity.ok(pet);
