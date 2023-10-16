@@ -42,9 +42,8 @@ public class PetService {
             return searchPet;
 
         } catch (EntityNotFoundException e){
-            throw new ControlerNotFoundException("Produto não encontrado");
+            throw new ControlerNotFoundException("Pet não encontrado");
         }
-
     }
 
     public void delete(UUID id){
