@@ -1,4 +1,4 @@
-package br.com.superpetcare.superpetcare;
+package br.com.superpetcare.superpetcare.controller.exception;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;

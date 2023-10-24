@@ -1,5 +1,6 @@
-package br.com.superpetcare.superpetcare;
+package br.com.superpetcare.superpetcare.repository;
 
+import br.com.superpetcare.superpetcare.entities.Pet;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

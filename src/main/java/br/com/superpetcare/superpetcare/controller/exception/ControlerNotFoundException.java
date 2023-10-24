@@ -1,4 +1,4 @@
-package br.com.superpetcare.superpetcare;
+package br.com.superpetcare.superpetcare.controller.exception;
 
 public class ControlerNotFoundException extends RuntimeException{
 

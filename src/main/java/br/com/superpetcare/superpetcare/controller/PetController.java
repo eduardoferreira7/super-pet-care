@@ -1,12 +1,14 @@
-package br.com.superpetcare.superpetcare;
+package br.com.superpetcare.superpetcare.controller;
 
+import br.com.superpetcare.superpetcare.dto.PetDTO;
+import br.com.superpetcare.superpetcare.entities.Pet;
+import br.com.superpetcare.superpetcare.service.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -17,31 +19,31 @@ public class PetController {
     private PetService petService;
 
     @GetMapping
-    public ResponseEntity<Collection<Pet>> findAll() {
+    public ResponseEntity<Collection<PetDTO>> findAll() {
         var pets = petService.findAll();
 
         return ResponseEntity.ok(pets);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Pet> findById(@PathVariable UUID id){
+    public ResponseEntity<PetDTO> findById(@PathVariable UUID id){
         var pet = petService.findById(id);
 
         return ResponseEntity.ok(pet);
     }
 
     @PostMapping
-    public ResponseEntity<Pet> save(@RequestBody Pet pet){
-        pet = petService.save(pet);
-        return ResponseEntity.status(HttpStatusCode.valueOf(201)).body(pet);
+    public ResponseEntity<PetDTO> save(@RequestBody PetDTO petDTO){
+        petDTO = petService.save(petDTO);
+        return ResponseEntity.status(HttpStatusCode.valueOf(201)).body(petDTO);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Pet> update(
-            @PathVariable UUID id, @RequestBody Pet pet)
+    public ResponseEntity<PetDTO> update(
+            @PathVariable UUID id, @RequestBody PetDTO petDTO)
     {
-        pet = petService.update(id, pet);
-        return ResponseEntity.ok(pet);
+        petDTO = petService.update(id, petDTO);
+        return ResponseEntity.ok(petDTO);
     }
 
     @DeleteMapping("/{id}")
