@@ -5,7 +5,7 @@ import java.util.UUID;
 public record PetDTO(
         UUID id,
         String name,
-        String description,
+        String serviceDescription,
         String imageUrl,
         double serviceValue
 ) {

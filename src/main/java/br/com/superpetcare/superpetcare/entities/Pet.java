@@ -13,17 +13,17 @@ public class Pet {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String name;
-    private String description;
+    private String serviceDescription;
     private String imageUrl;
     private double serviceValue;
 
     public Pet() {
     }
 
-    public Pet(UUID id, String name, String description, String imageUrl, double serviceValue) {
+    public Pet(UUID id, String name, String serviceDescription, String imageUrl, double serviceValue) {
         this.id = id;
         this.name = name;
-        this.description = description;
+        this.serviceDescription = serviceDescription;
         this.imageUrl = imageUrl;
         this.serviceValue = serviceValue;
     }
@@ -44,12 +44,12 @@ public class Pet {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getServiceDescription() {
+        return serviceDescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setServiceDescription(String description) {
+        this.serviceDescription = description;
     }
 
     public String getImageUrl() {
@@ -73,12 +73,12 @@ public class Pet {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Pet pet = (Pet) o;
-        return Double.compare(serviceValue, pet.serviceValue) == 0 && Objects.equals(id, pet.id) && Objects.equals(name, pet.name) && Objects.equals(description, pet.description) && Objects.equals(imageUrl, pet.imageUrl);
+        return Double.compare(serviceValue, pet.serviceValue) == 0 && Objects.equals(id, pet.id) && Objects.equals(name, pet.name) && Objects.equals(serviceDescription, pet.serviceDescription) && Objects.equals(imageUrl, pet.imageUrl);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, imageUrl, serviceValue);
+        return Objects.hash(id, name, serviceDescription, imageUrl, serviceValue);
     }
 
     @Override
@@ -86,7 +86,7 @@ public class Pet {
         return "Pet{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
+                ", serviceDescription='" + serviceDescription + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
                 ", serviceValue=" + serviceValue +
                 '}';

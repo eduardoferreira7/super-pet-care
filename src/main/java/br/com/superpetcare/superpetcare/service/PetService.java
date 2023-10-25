@@ -38,7 +38,7 @@ public class PetService {
         try {
             Pet searchPet = petRepository.getReferenceById(id);
             searchPet.setName(petDTO.name());
-            searchPet.setDescription(petDTO.description());
+            searchPet.setServiceDescription(petDTO.serviceDescription());
             searchPet.setImageUrl(petDTO.imageUrl());
             searchPet.setServiceValue(petDTO.serviceValue());
             searchPet = petRepository.save(searchPet);
@@ -58,7 +58,7 @@ public class PetService {
         return new PetDTO(
                 pet.getId(),
                 pet.getName(),
-                pet.getDescription(),
+                pet.getServiceDescription(),
                 pet.getImageUrl(),
                 pet.getServiceValue()
         );
@@ -68,7 +68,7 @@ public class PetService {
         return new Pet(
                 petDTO.id(),
                 petDTO.name(),
-                petDTO.description(),
+                petDTO.serviceDescription(),
                 petDTO.imageUrl(),
                 petDTO.serviceValue()
         );
