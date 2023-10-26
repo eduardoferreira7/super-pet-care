@@ -12,7 +12,7 @@ public class Pet {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-    private String name;
+    private String breedName;
     private String serviceDescription;
     private String imageUrl;
     private double serviceValue;
@@ -20,9 +20,9 @@ public class Pet {
     public Pet() {
     }
 
-    public Pet(UUID id, String name, String serviceDescription, String imageUrl, double serviceValue) {
+    public Pet(UUID id, String breedName, String serviceDescription, String imageUrl, double serviceValue) {
         this.id = id;
-        this.name = name;
+        this.breedName = breedName;
         this.serviceDescription = serviceDescription;
         this.imageUrl = imageUrl;
         this.serviceValue = serviceValue;
@@ -36,12 +36,12 @@ public class Pet {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getBreedName() {
+        return breedName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setBreedName(String name) {
+        this.breedName = name;
     }
 
     public String getServiceDescription() {
@@ -73,19 +73,19 @@ public class Pet {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Pet pet = (Pet) o;
-        return Double.compare(serviceValue, pet.serviceValue) == 0 && Objects.equals(id, pet.id) && Objects.equals(name, pet.name) && Objects.equals(serviceDescription, pet.serviceDescription) && Objects.equals(imageUrl, pet.imageUrl);
+        return Double.compare(serviceValue, pet.serviceValue) == 0 && Objects.equals(id, pet.id) && Objects.equals(breedName, pet.breedName) && Objects.equals(serviceDescription, pet.serviceDescription) && Objects.equals(imageUrl, pet.imageUrl);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, serviceDescription, imageUrl, serviceValue);
+        return Objects.hash(id, breedName, serviceDescription, imageUrl, serviceValue);
     }
 
     @Override
     public String toString() {
         return "Pet{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", name='" + breedName + '\'' +
                 ", serviceDescription='" + serviceDescription + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
                 ", serviceValue=" + serviceValue +
